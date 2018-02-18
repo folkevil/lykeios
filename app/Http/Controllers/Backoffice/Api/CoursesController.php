@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backoffice\Api;
 
-use App\Models\Course;
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 
 class CoursesController extends Controller
 {

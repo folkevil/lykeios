@@ -67,7 +67,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('backoffice/api')
              ->middleware(['api', 'auth:api'])
-             ->namespace($this->namespace . '\Backoffice\Api')
+             ->namespace($this->namespace.'\Backoffice\Api')
              ->group(base_path('routes/backoffice_api.php'));
     }
 }
