@@ -2,15 +2,15 @@
 
 namespace Tests\Unit\Models;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class CourseTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    function it_should_determine_if_it_has_been_published()
+    public function it_should_determine_if_it_has_been_published()
     {
         $courseA = factory(\App\Models\Course::class)->create(['published_at' => now()]);
         $courseB = factory(\App\Models\Course::class)->create(['published_at' => null]);
@@ -20,7 +20,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    function it_should_be_marked_as_published()
+    public function it_should_be_marked_as_published()
     {
         $course = factory(\App\Models\Course::class)->create(['published_at' => null]);
         $this->assertFalse($course->published());
@@ -31,7 +31,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    function it_should_be_marked_as_unpublished()
+    public function it_should_be_marked_as_unpublished()
     {
         $course = factory(\App\Models\Course::class)->create(['published_at' => now()]);
         $this->assertTrue($course->published());

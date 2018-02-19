@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Backoffice\Api;
 
-use Tests\TestCase;
-use Illuminate\Support\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Carbon;
+use Tests\TestCase;
 
 class PublishCourseTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    function users_can_publish_a_course()
+    public function users_can_publish_a_course()
     {
         Carbon::setTestNow(now());
 
@@ -32,7 +32,7 @@ class PublishCourseTest extends TestCase
     }
 
     /** @test */
-    function users_can_unpublish_a_course()
+    public function users_can_unpublish_a_course()
     {
         $user = factory(\App\User::class)->create();
         $course = factory(\App\Models\Course::class)->create();
