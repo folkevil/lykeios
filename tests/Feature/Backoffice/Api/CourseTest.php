@@ -42,7 +42,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    function users_can_create_a_new_course()
+    public function users_can_create_a_new_course()
     {
         $user = factory(\App\User::class)->create();
         $data = factory(\App\Models\Course::class)->raw([
@@ -72,7 +72,7 @@ class CourseTest extends TestCase
      * @test
      * @dataProvider requiredFieldsWhenCreatingACourseDataProvider
      */
-    function it_requires_some_when_creating_a_course(string $field)
+    public function it_requires_some_when_creating_a_course(string $field)
     {
         $user = factory(\App\User::class)->create();
 
@@ -85,7 +85,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    function users_can_update_an_existing_course()
+    public function users_can_update_an_existing_course()
     {
         $user = factory(\App\User::class)->create();
         $course = factory(\App\Models\Course::class)->create([
@@ -118,7 +118,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    function users_can_delete_an_existing_course()
+    public function users_can_delete_an_existing_course()
     {
         $user = factory(\App\User::class)->create();
         $course = factory(\App\Models\Course::class)->create();
