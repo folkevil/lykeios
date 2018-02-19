@@ -16,3 +16,6 @@ Route::post('courses', 'CoursesController@store');
 Route::get('courses/{course}', 'CoursesController@show');
 Route::put('courses/{course}', 'CoursesController@update');
 Route::delete('courses/{course}', 'CoursesController@destroy');
+
+Route::put('courses/{course}/publish', 'PublishCourseController@publish');
+Route::put('courses/{course}/unpublish', 'PublishCourseController@unpublish');
