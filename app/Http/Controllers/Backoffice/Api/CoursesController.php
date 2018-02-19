@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Backoffice\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\Controllers\Controller;
 
 class CoursesController extends Controller
 {
