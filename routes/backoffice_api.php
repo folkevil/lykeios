@@ -12,4 +12,7 @@
 */
 
 Route::get('courses', 'CoursesController@index');
+Route::post('courses', 'CoursesController@store');
 Route::get('courses/{course}', 'CoursesController@show');
+Route::put('courses/{course}', 'CoursesController@update');
+Route::delete('courses/{course}', 'CoursesController@destroy');
