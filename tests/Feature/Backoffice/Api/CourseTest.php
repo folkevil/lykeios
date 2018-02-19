@@ -2,16 +2,15 @@
 
 namespace Tests\Feature\Backoffice\Api;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class CourseTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    function users_can_see_all_courses()
+    public function users_can_see_all_courses()
     {
         $user = factory(\App\User::class)->create();
         factory(\App\Models\Course::class, 5)->create();
@@ -25,7 +24,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    function users_can_see_a_single_course()
+    public function users_can_see_a_single_course()
     {
         $user = factory(\App\User::class)->create();
         $course = factory(\App\Models\Course::class)->create([
