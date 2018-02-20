@@ -18,6 +18,8 @@ class CreateLearningResourcesTable extends Migration
             $table->unsignedInteger('course_id');
             $table->string('name');
             $table->text('description');
+            $table->string('resourceable_type');
+            $table->unsignedInteger('resourceable_id');
             $table->timestamps();
         });
     }

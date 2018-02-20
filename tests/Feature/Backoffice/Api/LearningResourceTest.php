@@ -30,7 +30,7 @@ class LearningResourceTest extends TestCase
     /** @test */
     public function users_can_see_all_learning_resources_of_a_course()
     {
-        factory(\App\Models\LearningResource::class, 5)->create(['course_id' => $this->course->id]);
+        factory(\App\Models\LearningResource::class, 5)->states('video')->create(['course_id' => $this->course->id]);
 
         $this->actingAs($this->user, 'api');
         $response = $this->get("/backoffice/api/courses/{$this->course->id}/learning-resources");
@@ -43,10 +43,12 @@ class LearningResourceTest extends TestCase
     /** @test */
     public function users_can_create_a_learning_resource_for_a_course()
     {
-        $data = factory(\App\Models\LearningResource::class)->raw([
+        $this->withoutExceptionHandling();
+
+        $data = array_merge(factory(\App\Models\LearningResource::class)->raw([
             'name' => 'Installing Laravel',
             'description' => 'Let\'s get started by installing...',
-        ]);
+        ]), ['type' => 'video']);
 
         $this->actingAs($this->user, 'api');
         $response = $this->post("/backoffice/api/courses/{$this->course->id}/learning-resources", $data);
