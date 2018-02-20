@@ -10,23 +10,41 @@ class PublishAndUnpublishCourseTest extends TestCase
 {
     use RefreshDatabase;
 
+    /**
+     * @var \App\User
+     */
+    private $user;
+
+    /**
+     * @var \App\Models\Course
+     */
+    private $course;
+
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $this->user = factory(\App\User::class)->create();
+        $this->course = factory(\App\Models\Course::class)->create([
+            'name' => 'How to become a web artisan with Laravel',
+            'language' => 'en_US',
+        ]);
+    }
+
     /** @test */
     public function users_can_publish_a_course()
     {
         Carbon::setTestNow(now());
 
-        $user = factory(\App\User::class)->create();
-        $course = factory(\App\Models\Course::class)->create();
+        $this->assertCourseIsNotPublished($this->course);
 
-        $this->assertCourseIsNotPublished($course);
+        $this->actingAs($this->user, 'api');
+        $response = $this->put("/backoffice/api/courses/{$this->course->id}/publish");
 
-        $this->actingAs($user, 'api');
-        $response = $this->put("/backoffice/api/courses/{$course->id}/publish");
-
-        $this->assertCourseIsPublished($course);
+        $this->assertCourseIsPublished($this->course);
         $response->assertStatus(200);
         $this->assertDatabaseHas('courses', [
-            'id' => $course->id,
+            'id' => $this->course->id,
             'published_at' => now(),
         ]);
     }
@@ -34,19 +52,17 @@ class PublishAndUnpublishCourseTest extends TestCase
     /** @test */
     public function users_can_unpublish_a_course()
     {
-        $user = factory(\App\User::class)->create();
-        $course = factory(\App\Models\Course::class)->create();
-        $course->markAsPublished();
+        $this->course->markAsPublished();
 
-        $this->assertCourseIsPublished($course);
+        $this->assertCourseIsPublished($this->course);
 
-        $this->actingAs($user, 'api');
-        $response = $this->put("/backoffice/api/courses/{$course->id}/unpublish");
+        $this->actingAs($this->user, 'api');
+        $response = $this->put("/backoffice/api/courses/{$this->course->id}/unpublish");
 
-        $this->assertCourseIsNotPublished($course);
+        $this->assertCourseIsNotPublished($this->course);
         $response->assertStatus(200);
         $this->assertDatabaseHas('courses', [
-            'id' => $course->id,
+            'id' => $this->course->id,
             'published_at' => null,
         ]);
     }

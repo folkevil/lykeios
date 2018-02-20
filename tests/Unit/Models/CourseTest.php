@@ -10,6 +10,15 @@ class CourseTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    function it_has_many_learning_resources()
+    {
+        $course = factory(\App\Models\Course::class)->create();
+
+        $this->assertCount(0, $course->learningResources);
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $course->learningResources);
+    }
+
+    /** @test */
     public function it_should_determine_if_it_has_been_published()
     {
         $courseA = factory(\App\Models\Course::class)->create(['published_at' => now()]);
