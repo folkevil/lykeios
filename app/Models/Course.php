@@ -9,6 +9,16 @@ class Course extends Model
     protected $fillable = ['name', 'description', 'language'];
 
     /**
+     * Get the learning resources for the course.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function learningResources()
+    {
+        return $this->hasMany(LearningResource::class);
+    }
+
+    /**
      * Determine if the course has been published.
      *
      * @return bool
