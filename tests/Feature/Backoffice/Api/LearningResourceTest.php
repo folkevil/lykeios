@@ -28,7 +28,7 @@ class LearningResourceTest extends TestCase
     }
 
     /** @test */
-    function users_can_see_all_learning_resources_of_a_course()
+    public function users_can_see_all_learning_resources_of_a_course()
     {
         factory(\App\Models\LearningResource::class, 5)->create(['course_id' => $this->course->id]);
 
@@ -41,7 +41,7 @@ class LearningResourceTest extends TestCase
     }
 
     /** @test */
-    function users_can_create_a_learning_resource_for_a_course()
+    public function users_can_create_a_learning_resource_for_a_course()
     {
         $data = factory(\App\Models\LearningResource::class)->raw([
             'name' => 'Installing Laravel',

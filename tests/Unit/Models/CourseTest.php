@@ -10,7 +10,7 @@ class CourseTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function it_has_many_learning_resources()
+    public function it_has_many_learning_resources()
     {
         $course = factory(\App\Models\Course::class)->create();
 
