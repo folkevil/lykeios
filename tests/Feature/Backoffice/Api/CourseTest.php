@@ -86,7 +86,7 @@ class CourseTest extends TestCase
      * @test
      * @dataProvider requiredFieldsWhenCreatingACourseDataProvider
      */
-    public function it_requires_some_when_creating_a_course(string $field)
+    public function it_requires_some_fields_when_creating_a_course(string $field)
     {
         $this->actingAs($this->user, 'api');
         $response = $this->json('POST', '/backoffice/api/courses', [$field => null]);
@@ -135,7 +135,7 @@ class CourseTest extends TestCase
         ]);
     }
 
-    public function requiredFieldsWhenCreatingACourseDataProvider()
+    public function requiredFieldsWhenCreatingACourseDataProvider(): array
     {
         return [
             ['name'],

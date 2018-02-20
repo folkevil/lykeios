@@ -15,6 +15,7 @@ class CreateVideoResourcesTable extends Migration
     {
         Schema::create('video_resources', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('url');
             $table->timestamps();
         });
     }

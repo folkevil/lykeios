@@ -15,6 +15,7 @@ class CreateTextResourcesTable extends Migration
     {
         Schema::create('text_resources', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('content');
             $table->timestamps();
         });
     }

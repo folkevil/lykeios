@@ -3,11 +3,13 @@
 namespace Tests\Feature\Backoffice\Api;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Collection;
 use Tests\TestCase;
 
 class LearningResourceTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithFaker;
 
     /**
      * @var \App\User
@@ -40,18 +42,20 @@ class LearningResourceTest extends TestCase
         $this->assertCount(5, $entries);
     }
 
-    /** @test */
-    public function users_can_create_a_learning_resource_for_a_course()
+    /**
+     * @test
+     * @dataProvider validLearningResourceDataProvider
+     */
+    public function users_can_create_learning_resources_for_a_course(Collection $dataset)
     {
         $this->withoutExceptionHandling();
-
-        $data = array_merge(factory(\App\Models\LearningResource::class)->raw([
+        $merged = $dataset->merge([
             'name' => 'Installing Laravel',
             'description' => 'Let\'s get started by installing...',
-        ]), ['type' => 'video']);
+        ]);
 
         $this->actingAs($this->user, 'api');
-        $response = $this->post("/backoffice/api/courses/{$this->course->id}/learning-resources", $data);
+        $response = $this->json('POST', "/backoffice/api/courses/{$this->course->id}/learning-resources", $merged->all());
 
         $response->assertStatus(201);
         $response->assertJsonFragment([
@@ -65,5 +69,63 @@ class LearningResourceTest extends TestCase
             'name' => 'Installing Laravel',
             'description' => 'Let\'s get started by installing...',
         ]);
+
+        $this->assertDatabaseHas("{$dataset->get('type')}_resources", ($dataset->except(['type']))->all());
+    }
+
+    /**
+     * @test
+     * @dataProvider requiredFieldsWhenCreatingLearningResourcesDataProvider
+     */
+    public function it_requires_some_fields_when_creating_learning_resources(array $dataset)
+    {
+        $this->actingAs($this->user, 'api');
+
+        $response = $this->json('POST', "/backoffice/api/courses/{$this->course->id}/learning-resources", [
+            'type' => $dataset['type'],
+        ]);
+        $responseData = json_decode($response->getContent(), true);
+
+        $response->assertStatus(422);
+
+        foreach ($dataset['fields'] as $field) {
+            $this->assertArrayHasKey($field, $responseData['errors']);
+        }
+    }
+
+    public function validLearningResourceDataProvider(): array
+    {
+        return [
+            [
+                collect([
+                    'type' => 'video',
+                    'url' => 'https://www.youtube.com/watch?v=D7zUOtlpUPw',
+                ]),
+            ],
+            [
+                collect([
+                    'type' => 'text',
+                    'content' => 'Lorem ipsum dolor sit amet...',
+                ]),
+            ],
+        ];
+    }
+
+    public function requiredFieldsWhenCreatingLearningResourcesDataProvider(): array
+    {
+        $common = ['name', 'description'];
+
+        return [
+            [
+                [
+                    'type' => 'video',
+                    'fields' => array_merge($common, ['url']),
+                ],
+                [
+                    'type' => 'text',
+                    'fields' => array_merge($common, ['description']),
+                ],
+            ],
+        ];
     }
 }

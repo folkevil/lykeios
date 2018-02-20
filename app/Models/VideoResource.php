@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class VideoResource extends Model
 {
     use Resourceable;
+
+    protected $fillable = ['url'];
 }

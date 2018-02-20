@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backoffice\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LearningResourceRequest;
 use App\Models\Course;
 use App\Models\TextResource;
 use App\Models\VideoResource;
-use Illuminate\Http\Request;
 
 class LearningResourcesController extends Controller
 {
@@ -15,19 +15,27 @@ class LearningResourcesController extends Controller
         return $course->learningResources;
     }
 
-    public function store(Request $request, Course $course)
+    public function store(LearningResourceRequest $request, Course $course)
     {
-        $data = array_merge($request->only(['name', 'description']), [
-            'course_id' => $course->id,
-        ]);
-
         switch ($request->type) {
             case 'video':
-                $resource = VideoResource::create()->resource()->create($data);
+                $resource = VideoResource::create([
+                    'url' => $request->url,
+                ])->resource()->create([
+                    'course_id' => $course->id,
+                    'name' => $request->name,
+                    'description' => $request->description,
+                ]);
                 break;
 
             case 'text':
-                $resource = TextResource::create()->resource()->create($data);
+                $resource = TextResource::create([
+                    'content' => $request->content,
+                ])->resource()->create([
+                    'course_id' => $course->id,
+                    'name' => $request->name,
+                    'description' => $request->description,
+                ]);
                 break;
 
             default:
