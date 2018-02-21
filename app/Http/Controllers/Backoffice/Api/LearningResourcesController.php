@@ -41,7 +41,7 @@ class LearningResourcesController extends Controller
                 break;
 
             default:
-                throw new \InvalidArgumentException("Error Processing Request", 1);
+                throw new \InvalidArgumentException('Error Processing Request', 1);
                 break;
         }
 

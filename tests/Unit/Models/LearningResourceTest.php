@@ -10,7 +10,7 @@ class LearningResourceTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function it_must_have_a_resourceable()
+    public function it_must_have_a_resourceable()
     {
         $resourceA = factory(\App\Models\LearningResource::class)->states('video')->create();
         $resourceB = factory(\App\Models\LearningResource::class)->states('text')->create();

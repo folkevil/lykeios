@@ -50,7 +50,7 @@ class PublishAndUnpublishCourseTest extends TestCase
     }
 
     /** @test */
-    function other_than_admin_cannot_publish_courses()
+    public function other_than_admin_cannot_publish_courses()
     {
         $this->student = factory(\App\User::class)->create();
 
@@ -79,7 +79,7 @@ class PublishAndUnpublishCourseTest extends TestCase
     }
 
     /** @test */
-    function other_than_admin_cannot_unpublish_courses()
+    public function other_than_admin_cannot_unpublish_courses()
     {
         $this->student = factory(\App\User::class)->create();
 

@@ -43,7 +43,7 @@ class LearningResourceTest extends TestCase
     }
 
     /** @test */
-    function other_than_admin_cannot_see_all_learning_resources_of_a_course()
+    public function other_than_admin_cannot_see_all_learning_resources_of_a_course()
     {
         $this->student = factory(\App\User::class)->create();
 
@@ -84,7 +84,7 @@ class LearningResourceTest extends TestCase
     }
 
     /** @test */
-    function other_than_admin_cannot_create_learning_resources()
+    public function other_than_admin_cannot_create_learning_resources()
     {
         $this->student = factory(\App\User::class)->create();
 
