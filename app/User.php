@@ -10,6 +10,12 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * User roles.
+     */
+    const ROLE_ADMIN = 'admin';
+    const ROLE_STUDENT = 'student';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -34,6 +40,6 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return $this->role === 'admin';
+        return $this->role === self::ROLE_ADMIN;
     }
 }
