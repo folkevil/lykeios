@@ -65,7 +65,7 @@ class User extends Authenticatable
     public function enrollInto(Course $course): void
     {
         if (! $course->isPublished()) {
-            throw new \Exception("You cannot enroll an user in an unpublished course.");
+            throw new \Exception('You cannot enroll an user in an unpublished course.');
         }
 
         $this->enrollments()->attach($course);
