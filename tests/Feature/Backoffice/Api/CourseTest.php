@@ -44,7 +44,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    function other_than_admin_cannot_see_all_courses()
+    public function other_than_admin_cannot_see_all_courses()
     {
         $this->student = factory(\App\User::class)->create();
 
@@ -68,7 +68,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    function other_than_admin_cannot_see_a_single_course()
+    public function other_than_admin_cannot_see_a_single_course()
     {
         $this->student = factory(\App\User::class)->create();
 
@@ -105,7 +105,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    function other_than_admin_cannot_create_courses()
+    public function other_than_admin_cannot_create_courses()
     {
         $this->student = factory(\App\User::class)->create();
 
@@ -157,7 +157,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    function other_than_admin_cannot_update_courses()
+    public function other_than_admin_cannot_update_courses()
     {
         $this->student = factory(\App\User::class)->create();
 
@@ -180,7 +180,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    function other_than_admin_cannot_delete_courses()
+    public function other_than_admin_cannot_delete_courses()
     {
         $this->student = factory(\App\User::class)->create();
 
