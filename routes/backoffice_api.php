@@ -22,3 +22,5 @@ Route::put('courses/{course}/unpublish', 'PublishCourseController@unpublish');
 
 Route::get('courses/{course}/learning-resources', 'LearningResourcesController@index');
 Route::post('courses/{course}/learning-resources', 'LearningResourcesController@store');
+
+Route::post('enrollments', 'EnrollmentsController@store');

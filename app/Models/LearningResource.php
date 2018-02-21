@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class LearningResource extends Model
 {
@@ -11,7 +12,7 @@ class LearningResource extends Model
     /**
      * Get all of the owning resourceable models.
      */
-    public function resourceable()
+    public function resourceable(): MorphTo
     {
         return $this->morphTo();
     }

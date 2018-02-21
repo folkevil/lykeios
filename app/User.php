@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Models\Course;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -34,12 +36,38 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the courses the user is enrolled into.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function enrollments(): BelongsToMany
+    {
+        return $this->belongsToMany(Course::class, 'course_user', 'user_id');
+    }
+
+    /**
      * Determine if the user is an admin.
      *
      * @return bool
      */
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return $this->role === self::ROLE_ADMIN;
+    }
+
+    /**
+     * Enroll the user into a published course.
+     *
+     * @param \App\Models\Course $course
+     *
+     * @return void
+     */
+    public function enrollInto(Course $course): void
+    {
+        if (! $course->isPublished()) {
+            throw new \Exception("You cannot enroll an user in an unpublished course.");
+        }
+
+        $this->enrollments()->attach($course);
     }
 }

@@ -91,11 +91,11 @@ class PublishAndUnpublishCourseTest extends TestCase
 
     private function assertCourseIsNotPublished(\App\Models\Course $course)
     {
-        $this->assertFalse($course->fresh()->published(), 'Failed asserting that course isn\'t published.');
+        $this->assertFalse($course->fresh()->isPublished(), 'Failed asserting that course isn\'t published.');
     }
 
     private function assertCourseIsPublished(\App\Models\Course $course)
     {
-        $this->assertTrue($course->fresh()->published(), 'Failed asserting that course is published.');
+        $this->assertTrue($course->fresh()->isPublished(), 'Failed asserting that course is published.');
     }
 }

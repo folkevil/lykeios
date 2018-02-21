@@ -10,6 +10,15 @@ class CourseTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function it_has_many_users_enrolled_into()
+    {
+        $course = factory(\App\Models\Course::class)->create();
+
+        $this->assertCount(0, $course->enrollments);
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $course->enrollments);
+    }
+
+    /** @test */
     public function it_has_many_learning_resources()
     {
         $course = factory(\App\Models\Course::class)->create();
@@ -24,29 +33,38 @@ class CourseTest extends TestCase
         $courseA = factory(\App\Models\Course::class)->create(['published_at' => now()]);
         $courseB = factory(\App\Models\Course::class)->create(['published_at' => null]);
 
-        $this->assertTrue($courseA->published());
-        $this->assertFalse($courseB->published());
+        $this->assertTrue($courseA->isPublished());
+        $this->assertFalse($courseB->isPublished());
     }
 
     /** @test */
     public function it_should_be_marked_as_published()
     {
         $course = factory(\App\Models\Course::class)->create(['published_at' => null]);
-        $this->assertFalse($course->published());
+        $this->assertFalse($course->isPublished());
 
         $course->markAsPublished();
 
-        $this->assertTrue($course->fresh()->published());
+        $this->assertTrue($course->fresh()->isPublished());
     }
 
     /** @test */
     public function it_should_be_marked_as_unpublished()
     {
         $course = factory(\App\Models\Course::class)->create(['published_at' => now()]);
-        $this->assertTrue($course->published());
+        $this->assertTrue($course->isPublished());
 
         $course->markAsUnpublished();
 
-        $this->assertFalse($course->fresh()->published());
+        $this->assertFalse($course->fresh()->isPublished());
+    }
+
+    /** @test */
+    public function it_should_scope_to_published_courses()
+    {
+        factory(\App\Models\Course::class, 3)->create(['published_at' => now()]);
+        factory(\App\Models\Course::class, 2)->create(['published_at' => null]);
+
+        $this->assertEquals(3, \App\Models\Course::published()->count());
     }
 }
