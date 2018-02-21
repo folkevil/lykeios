@@ -52,4 +52,16 @@ class EnrollmentTest extends TestCase
 
         $response->assertStatus(403);
     }
+
+    /** @test */
+    public function it_requires_users_and_courses()
+    {
+        $this->actingAs($this->admin, 'api');
+        $response = $this->json('POST', '/backoffice/api/enrollments', []);
+        $responseData = json_decode($response->getContent(), true);
+
+        $response->assertStatus(422);
+        $this->assertArrayHasKey('users', $responseData['errors']);
+        $this->assertArrayHasKey('courses', $responseData['errors']);
+    }
 }

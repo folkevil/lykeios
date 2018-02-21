@@ -15,6 +15,13 @@ class EnrollmentsController extends Controller
     {
         $this->authorize('enroll_users');
 
+        $this->validate($request, [
+            'users' => 'required|array',
+            'users.*' => 'integer',
+            'courses' => 'required|array',
+            'courses.*' => 'integer',
+        ]);
+
         $users = $this->mapUsers($request->users);
         $courses = $this->mapCourses($request->courses);
 
