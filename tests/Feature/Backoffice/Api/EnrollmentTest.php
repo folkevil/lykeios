@@ -24,7 +24,6 @@ class EnrollmentTest extends TestCase
     /** @test */
     public function users_can_be_enrolled_in_published_courses()
     {
-        $this->withoutExceptionHandling();
         $students = factory(\App\User::class, 2)->create();
         $course = factory(\App\Models\Course::class)->states('published')->create();
 
@@ -41,5 +40,16 @@ class EnrollmentTest extends TestCase
             'total_successfull_enrollments' => 2,
         ]);
         $this->assertEquals(2, $course->enrollments()->count());
+    }
+
+    /** @test */
+    public function non_admin_cannot_enroll_users_into_courses()
+    {
+        $student = factory(\App\User::class)->create();
+
+        $this->actingAs($student, 'api');
+        $response = $this->post('/backoffice/api/enrollments', []);
+
+        $response->assertStatus(403);
     }
 }

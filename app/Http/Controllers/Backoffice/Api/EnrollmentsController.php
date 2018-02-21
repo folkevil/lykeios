@@ -13,6 +13,8 @@ class EnrollmentsController extends Controller
 {
     public function store(Request $request)
     {
+        $this->authorize('enroll_users');
+
         $users = $this->mapUsers($request->users);
         $courses = $this->mapCourses($request->courses);
 
