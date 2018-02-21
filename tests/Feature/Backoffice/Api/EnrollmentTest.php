@@ -25,11 +25,11 @@ class EnrollmentTest extends TestCase
     public function users_can_be_enrolled_in_published_courses()
     {
         $this->withoutExceptionHandling();
-        $student = factory(\App\User::class)->create();
+        $students = factory(\App\User::class, 2)->create();
         $course = factory(\App\Models\Course::class)->states('published')->create();
 
         $data = [
-            'users' => [$student->id],
+            'users' => $students->pluck('id')->all(),
             'courses' => [$course->id],
         ];
 
@@ -37,7 +37,9 @@ class EnrollmentTest extends TestCase
         $response = $this->post('/backoffice/api/enrollments', $data);
 
         $response->assertStatus(201);
-        $this->assertEquals(1, $student->enrollments()->count());
-        $this->assertEquals(1, $course->enrollments()->count());
+        $response->assertJsonFragment([
+            'total_successfull_enrollments' => 2,
+        ]);
+        $this->assertEquals(2, $course->enrollments()->count());
     }
 }
