@@ -12,7 +12,7 @@ class CourseTest extends TestCase
     /**
      * @var \App\User
      */
-    private $user;
+    private $admin;
 
     /**
      * @var \App\Models\Course
@@ -23,7 +23,7 @@ class CourseTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = factory(\App\User::class)->create();
+        $this->admin = factory(\App\User::class)->states('admin')->create();
         $this->existingCourse = factory(\App\Models\Course::class)->create([
             'name' => 'How to become a web artisan with Laravel',
             'language' => 'en_US',
@@ -31,11 +31,11 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function users_can_see_all_courses()
+    public function admins_can_see_all_courses()
     {
         factory(\App\Models\Course::class, 5)->create();
 
-        $this->actingAs($this->user, 'api');
+        $this->actingAs($this->admin, 'api');
         $response = $this->get('/backoffice/api/courses');
         $entries = json_decode($response->getContent(), true);
 
@@ -44,9 +44,20 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function users_can_see_a_single_course()
+    function other_than_admin_cannot_see_all_courses()
     {
-        $this->actingAs($this->user, 'api');
+        $this->student = factory(\App\User::class)->create();
+
+        $this->actingAs($this->student, 'api');
+        $response = $this->get('/backoffice/api/courses');
+
+        $response->assertStatus(403);
+    }
+
+    /** @test */
+    public function admins_can_see_a_single_course()
+    {
+        $this->actingAs($this->admin, 'api');
         $response = $this->get("/backoffice/api/courses/{$this->existingCourse->id}");
 
         $response->assertStatus(200);
@@ -57,7 +68,18 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function users_can_create_a_new_course()
+    function other_than_admin_cannot_see_a_single_course()
+    {
+        $this->student = factory(\App\User::class)->create();
+
+        $this->actingAs($this->student, 'api');
+        $response = $this->get("/backoffice/api/courses/{$this->existingCourse->id}");
+
+        $response->assertStatus(403);
+    }
+
+    /** @test */
+    public function admins_can_create_a_new_course()
     {
         $data = factory(\App\Models\Course::class)->raw([
             'name' => 'How to become a web artisan with Laravel',
@@ -65,7 +87,7 @@ class CourseTest extends TestCase
             'language' => 'en_US',
         ]);
 
-        $this->actingAs($this->user, 'api');
+        $this->actingAs($this->admin, 'api');
         $response = $this->post('/backoffice/api/courses', $data);
 
         $response->assertStatus(201);
@@ -82,13 +104,24 @@ class CourseTest extends TestCase
         ]);
     }
 
+    /** @test */
+    function other_than_admin_cannot_create_courses()
+    {
+        $this->student = factory(\App\User::class)->create();
+
+        $this->actingAs($this->student, 'api');
+        $response = $this->json('POST', '/backoffice/api/courses', []);
+
+        $response->assertStatus(403);
+    }
+
     /**
      * @test
      * @dataProvider requiredFieldsWhenCreatingACourseDataProvider
      */
     public function it_requires_some_fields_when_creating_a_course(string $field)
     {
-        $this->actingAs($this->user, 'api');
+        $this->actingAs($this->admin, 'api');
         $response = $this->json('POST', '/backoffice/api/courses', [$field => null]);
         $responseData = json_decode($response->getContent(), true);
 
@@ -97,14 +130,14 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function users_can_update_an_existing_course()
+    public function admins_can_update_an_existing_course()
     {
         $data = [
             'name' => 'Changed the course name',
             'description' => 'Also the course description',
         ];
 
-        $this->actingAs($this->user, 'api');
+        $this->actingAs($this->admin, 'api');
         $response = $this->json('PUT', "/backoffice/api/courses/{$this->existingCourse->id}", $data);
 
         $response->assertStatus(200);
@@ -124,15 +157,37 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function users_can_delete_an_existing_course()
+    function other_than_admin_cannot_update_courses()
     {
-        $this->actingAs($this->user, 'api');
+        $this->student = factory(\App\User::class)->create();
+
+        $this->actingAs($this->student, 'api');
+        $response = $this->json('PUT', "/backoffice/api/courses/{$this->existingCourse->id}", []);
+
+        $response->assertStatus(403);
+    }
+
+    /** @test */
+    public function admins_can_delete_an_existing_course()
+    {
+        $this->actingAs($this->admin, 'api');
         $response = $this->delete("/backoffice/api/courses/{$this->existingCourse->id}");
 
         $response->assertStatus(204);
         $this->assertDatabaseMissing('courses', [
             'id' => $this->existingCourse->id,
         ]);
+    }
+
+    /** @test */
+    function other_than_admin_cannot_delete_courses()
+    {
+        $this->student = factory(\App\User::class)->create();
+
+        $this->actingAs($this->student, 'api');
+        $response = $this->delete("/backoffice/api/courses/{$this->existingCourse->id}");
+
+        $response->assertStatus(403);
     }
 
     public function requiredFieldsWhenCreatingACourseDataProvider(): array

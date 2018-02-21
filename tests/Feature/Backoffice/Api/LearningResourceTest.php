@@ -14,7 +14,7 @@ class LearningResourceTest extends TestCase
     /**
      * @var \App\User
      */
-    private $user;
+    private $admin;
 
     /**
      * @var \App\Models\Course
@@ -25,16 +25,16 @@ class LearningResourceTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = factory(\App\User::class)->create();
+        $this->admin = factory(\App\User::class)->states('admin')->create();
         $this->course = factory(\App\Models\Course::class)->create();
     }
 
     /** @test */
-    public function users_can_see_all_learning_resources_of_a_course()
+    public function admins_can_see_all_learning_resources_of_a_course()
     {
         factory(\App\Models\LearningResource::class, 5)->states('video')->create(['course_id' => $this->course->id]);
 
-        $this->actingAs($this->user, 'api');
+        $this->actingAs($this->admin, 'api');
         $response = $this->get("/backoffice/api/courses/{$this->course->id}/learning-resources");
         $entries = json_decode($response->getContent(), true);
 
@@ -42,19 +42,29 @@ class LearningResourceTest extends TestCase
         $this->assertCount(5, $entries);
     }
 
+    /** @test */
+    function other_than_admin_cannot_see_all_learning_resources_of_a_course()
+    {
+        $this->student = factory(\App\User::class)->create();
+
+        $this->actingAs($this->student, 'api');
+        $response = $this->get("/backoffice/api/courses/{$this->course->id}/learning-resources");
+
+        $response->assertStatus(403);
+    }
+
     /**
      * @test
      * @dataProvider validLearningResourceDataProvider
      */
-    public function users_can_create_learning_resources_for_a_course(Collection $dataset)
+    public function admins_can_create_learning_resources_for_a_course(Collection $dataset)
     {
-        $this->withoutExceptionHandling();
         $merged = $dataset->merge([
             'name' => 'Installing Laravel',
             'description' => 'Let\'s get started by installing...',
         ]);
 
-        $this->actingAs($this->user, 'api');
+        $this->actingAs($this->admin, 'api');
         $response = $this->json('POST', "/backoffice/api/courses/{$this->course->id}/learning-resources", $merged->all());
 
         $response->assertStatus(201);
@@ -73,13 +83,24 @@ class LearningResourceTest extends TestCase
         $this->assertDatabaseHas("{$dataset->get('type')}_resources", ($dataset->except(['type']))->all());
     }
 
+    /** @test */
+    function other_than_admin_cannot_create_learning_resources()
+    {
+        $this->student = factory(\App\User::class)->create();
+
+        $this->actingAs($this->student, 'api');
+        $response = $this->json('POST', "/backoffice/api/courses/{$this->course->id}/learning-resources", ['type' => 'video']);
+
+        $response->assertStatus(403);
+    }
+
     /**
      * @test
      * @dataProvider requiredFieldsWhenCreatingLearningResourcesDataProvider
      */
     public function it_requires_some_fields_when_creating_learning_resources(array $dataset)
     {
-        $this->actingAs($this->user, 'api');
+        $this->actingAs($this->admin, 'api');
 
         $response = $this->json('POST', "/backoffice/api/courses/{$this->course->id}/learning-resources", [
             'type' => $dataset['type'],

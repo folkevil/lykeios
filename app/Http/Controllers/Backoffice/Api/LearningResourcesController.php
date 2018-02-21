@@ -12,6 +12,8 @@ class LearningResourcesController extends Controller
 {
     public function index(Course $course)
     {
+        $this->authorize('index', $course);
+
         return $course->learningResources;
     }
 

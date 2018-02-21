@@ -9,6 +9,8 @@ class PublishCourseController extends Controller
 {
     public function publish(Course $course)
     {
+        $this->authorize('update', $course);
+
         $course->markAsPublished();
 
         return $course;
@@ -16,6 +18,8 @@ class PublishCourseController extends Controller
 
     public function unpublish(Course $course)
     {
+        $this->authorize('update', $course);
+
         $course->markAsUnpublished();
 
         return $course;

@@ -13,7 +13,7 @@ class LearningResourceRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->check();
+        return auth()->user()->can('update', $this->route('course'));
     }
 
     /**

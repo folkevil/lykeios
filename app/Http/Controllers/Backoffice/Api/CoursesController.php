@@ -11,16 +11,22 @@ class CoursesController extends Controller
 {
     public function index()
     {
+        $this->authorize('index', Course::class);
+
         return Course::all();
     }
 
     public function show(Course $course)
     {
+        $this->authorize('show', $course);
+
         return $course;
     }
 
     public function store(Request $request)
     {
+        $this->authorize('store', Course::class);
+
         $data = $this->validate($request, [
             'name' => 'required|string',
             'description' => 'required|string',
@@ -32,6 +38,8 @@ class CoursesController extends Controller
 
     public function update(Request $request, Course $course)
     {
+        $this->authorize('update', $course);
+
         $data = $this->validate($request, [
             'name' => 'string',
             'description' => 'string',
@@ -45,6 +53,8 @@ class CoursesController extends Controller
 
     public function destroy(Course $course)
     {
+        $this->authorize('destroy', $course);
+
         $course->delete();
 
         return response()->json([], Response::HTTP_NO_CONTENT);

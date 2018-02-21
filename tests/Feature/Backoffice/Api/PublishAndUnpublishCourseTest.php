@@ -13,7 +13,7 @@ class PublishAndUnpublishCourseTest extends TestCase
     /**
      * @var \App\User
      */
-    private $user;
+    private $admin;
 
     /**
      * @var \App\Models\Course
@@ -24,7 +24,7 @@ class PublishAndUnpublishCourseTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = factory(\App\User::class)->create();
+        $this->admin = factory(\App\User::class)->states('admin')->create();
         $this->course = factory(\App\Models\Course::class)->create([
             'name' => 'How to become a web artisan with Laravel',
             'language' => 'en_US',
@@ -32,13 +32,13 @@ class PublishAndUnpublishCourseTest extends TestCase
     }
 
     /** @test */
-    public function users_can_publish_a_course()
+    public function admins_can_publish_a_course()
     {
         Carbon::setTestNow(now());
 
         $this->assertCourseIsNotPublished($this->course);
 
-        $this->actingAs($this->user, 'api');
+        $this->actingAs($this->admin, 'api');
         $response = $this->put("/backoffice/api/courses/{$this->course->id}/publish");
 
         $this->assertCourseIsPublished($this->course);
@@ -50,13 +50,24 @@ class PublishAndUnpublishCourseTest extends TestCase
     }
 
     /** @test */
-    public function users_can_unpublish_a_course()
+    function other_than_admin_cannot_publish_courses()
+    {
+        $this->student = factory(\App\User::class)->create();
+
+        $this->actingAs($this->student, 'api');
+        $response = $this->put("/backoffice/api/courses/{$this->course->id}/publish");
+
+        $response->assertStatus(403);
+    }
+
+    /** @test */
+    public function admins_can_unpublish_a_course()
     {
         $this->course->markAsPublished();
 
         $this->assertCourseIsPublished($this->course);
 
-        $this->actingAs($this->user, 'api');
+        $this->actingAs($this->admin, 'api');
         $response = $this->put("/backoffice/api/courses/{$this->course->id}/unpublish");
 
         $this->assertCourseIsNotPublished($this->course);
@@ -65,6 +76,17 @@ class PublishAndUnpublishCourseTest extends TestCase
             'id' => $this->course->id,
             'published_at' => null,
         ]);
+    }
+
+    /** @test */
+    function other_than_admin_cannot_unpublish_courses()
+    {
+        $this->student = factory(\App\User::class)->create();
+
+        $this->actingAs($this->student, 'api');
+        $response = $this->put("/backoffice/api/courses/{$this->course->id}/unpublish");
+
+        $response->assertStatus(403);
     }
 
     private function assertCourseIsNotPublished(\App\Models\Course $course)
