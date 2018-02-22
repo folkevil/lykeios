@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Jobs\AssignLessonsToUser;
 use App\Models\Course;
 use App\Models\Relations\Enrollment;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -44,6 +45,7 @@ class User extends Authenticatable
     public function enrollments(): BelongsToMany
     {
         return $this->belongsToMany(Course::class, 'course_user', 'user_id')
+            ->withPivot(['id'])
             ->as('enrollment')
             ->using(Enrollment::class)
             ->withTimestamps();
@@ -60,6 +62,18 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the enrollment relation for the given course.
+     *
+     * @param \App\Models\Course $course
+     *
+     * @return \App\Models\Relations\Enrollment
+     */
+    public function getEnrollmentForCourse(Course $course): Enrollment
+    {
+        return $this->enrollments()->where('course_id', $course->id)->first()->enrollment;
+    }
+
+    /**
      * Enroll the user into a published course.
      *
      * @param \App\Models\Course $course
@@ -73,5 +87,7 @@ class User extends Authenticatable
         }
 
         $this->enrollments()->attach($course);
+
+        dispatch(new AssignLessonsToUser($this, $course));
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Tests\Unit\Models;
 
+use App\Jobs\AssignLessonsToUser;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Bus;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -28,5 +30,18 @@ class UserTest extends TestCase
         $enrollment = $user->enrollInto($course);
 
         $this->assertEquals(1, $user->enrollments()->count());
+    }
+
+    /** @test */
+    public function it_must_assign_lessons_when_enrolled_into_an_course()
+    {
+        Bus::fake();
+
+        $user = factory(\App\User::class)->create();
+        $course = factory(\App\Models\Course::class)->states('published')->create();
+
+        $enrollment = $user->enrollInto($course);
+
+        Bus::assertDispatched(AssignLessonsToUser::class);
     }
 }
