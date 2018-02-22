@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVideoResourcesTable extends Migration
+class CreateLessonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateVideoResourcesTable extends Migration
      */
     public function up()
     {
-        Schema::create('video_resources', function (Blueprint $table) {
+        Schema::create('lessons', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('url');
+            $table->unsignedInteger('course_id');
+            $table->string('name');
+            $table->text('description');
+            $table->morphs('lessonable');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateVideoResourcesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_resources');
+        Schema::dropIfExists('lessons');
     }
 }

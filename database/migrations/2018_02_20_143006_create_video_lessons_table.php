@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTextResourcesTable extends Migration
+class CreateVideoLessonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTextResourcesTable extends Migration
      */
     public function up()
     {
-        Schema::create('text_resources', function (Blueprint $table) {
+        Schema::create('video_lessons', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('content');
+            $table->string('url');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateTextResourcesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('text_resources');
+        Schema::dropIfExists('video_lessons');
     }
 }

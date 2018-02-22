@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLearningResourcesTable extends Migration
+class CreateTextLessonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateLearningResourcesTable extends Migration
      */
     public function up()
     {
-        Schema::create('learning_resources', function (Blueprint $table) {
+        Schema::create('text_lessons', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('course_id');
-            $table->string('name');
-            $table->text('description');
-            $table->morphs('resourceable');
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateLearningResourcesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('learning_resources');
+        Schema::dropIfExists('text_lessons');
     }
 }

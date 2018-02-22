@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LearningResourceRequest extends FormRequest
+class LessonRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class LearningResourceRequest extends FormRequest
      */
     public function rules()
     {
-        $request = app('\App\Http\Requests\\'.studly_case($this->type).'ResourceRequest');
+        $request = app('\App\Http\Requests\\'.studly_case($this->type).'LessonRequest');
 
         return array_merge([
             'name' => 'required|string',

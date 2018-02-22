@@ -13,13 +13,13 @@ class Course extends Model
     protected $fillable = ['name', 'description', 'language'];
 
     /**
-     * Get the learning resources for the course.
+     * Get the lessons for the course.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function learningResources(): HasMany
+    public function lessons(): HasMany
     {
-        return $this->hasMany(LearningResource::class);
+        return $this->hasMany(Lesson::class);
     }
 
     /**
@@ -29,7 +29,10 @@ class Course extends Model
      */
     public function enrollments(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'course_user', 'course_id');
+        return $this->belongsToMany(Course::class, 'course_user', 'course_id')
+            ->as('enrollment')
+            ->using(Enrollment::class)
+            ->withTimestamps();
     }
 
     /**

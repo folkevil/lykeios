@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Course;
+use App\Models\Relations\Enrollment;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -42,7 +43,10 @@ class User extends Authenticatable
      */
     public function enrollments(): BelongsToMany
     {
-        return $this->belongsToMany(Course::class, 'course_user', 'user_id');
+        return $this->belongsToMany(Course::class, 'course_user', 'user_id')
+            ->as('enrollment')
+            ->using(Enrollment::class)
+            ->withTimestamps();
     }
 
     /**
@@ -65,7 +69,7 @@ class User extends Authenticatable
     public function enrollInto(Course $course): void
     {
         if (! $course->isPublished()) {
-            throw new \Exception('You cannot enroll an user in an unpublished course.');
+            throw new \Exception('You cannot enroll an user into an unpublished course.');
         }
 
         $this->enrollments()->attach($course);

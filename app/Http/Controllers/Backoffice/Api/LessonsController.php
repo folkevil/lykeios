@@ -3,27 +3,27 @@
 namespace App\Http\Controllers\Backoffice\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LearningResourceRequest;
+use App\Http\Requests\LessonRequest;
 use App\Models\Course;
-use App\Models\TextResource;
-use App\Models\VideoResource;
+use App\Models\TextLesson;
+use App\Models\VideoLesson;
 
-class LearningResourcesController extends Controller
+class LessonsController extends Controller
 {
     public function index(Course $course)
     {
         $this->authorize('index', $course);
 
-        return $course->learningResources;
+        return $course->lessons;
     }
 
-    public function store(LearningResourceRequest $request, Course $course)
+    public function store(LessonRequest $request, Course $course)
     {
         switch ($request->type) {
             case 'video':
-                $resource = VideoResource::create([
+                $lesson = VideoLesson::create([
                     'url' => $request->url,
-                ])->resource()->create([
+                ])->lesson()->create([
                     'course_id' => $course->id,
                     'name' => $request->name,
                     'description' => $request->description,
@@ -31,9 +31,9 @@ class LearningResourcesController extends Controller
                 break;
 
             case 'text':
-                $resource = TextResource::create([
+                $lesson = TextLesson::create([
                     'content' => $request->content,
-                ])->resource()->create([
+                ])->lesson()->create([
                     'course_id' => $course->id,
                     'name' => $request->name,
                     'description' => $request->description,
@@ -45,6 +45,6 @@ class LearningResourcesController extends Controller
                 break;
         }
 
-        return $resource;
+        return $lesson;
     }
 }

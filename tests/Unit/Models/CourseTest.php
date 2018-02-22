@@ -23,8 +23,8 @@ class CourseTest extends TestCase
     {
         $course = factory(\App\Models\Course::class)->create();
 
-        $this->assertCount(0, $course->learningResources);
-        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $course->learningResources);
+        $this->assertCount(0, $course->lessons);
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $course->lessons);
     }
 
     /** @test */

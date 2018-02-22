@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class TextResourceRequest
+class VideoLessonRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -12,7 +12,7 @@ class TextResourceRequest
     public function rules()
     {
         return [
-            'content' => 'required|string',
+            'url' => 'required|url',
         ];
     }
 }

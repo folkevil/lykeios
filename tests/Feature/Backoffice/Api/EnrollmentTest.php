@@ -2,7 +2,9 @@
 
 namespace Tests\Feature\Backoffice\Api;
 
+use App\Jobs\GenerateUserLessons;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Bus;
 use Tests\TestCase;
 
 class EnrollmentTest extends TestCase
@@ -24,6 +26,7 @@ class EnrollmentTest extends TestCase
     /** @test */
     public function users_can_be_enrolled_in_published_courses()
     {
+        $this->withoutExceptionHandling();
         $students = factory(\App\User::class, 2)->create();
         $course = factory(\App\Models\Course::class)->states('published')->create();
 

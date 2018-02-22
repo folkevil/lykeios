@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Traits\Resourceable;
+use App\Models\Traits\Lessonable;
 use Illuminate\Database\Eloquent\Model;
 
-class TextResource extends Model
+class TextLesson extends Model
 {
-    use Resourceable;
+    use Lessonable;
 
     protected $fillable = ['content'];
 }
