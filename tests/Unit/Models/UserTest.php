@@ -33,6 +33,17 @@ class UserTest extends TestCase
     }
 
     /** @test */
+    public function it_must_throw_an_exception_when_trying_to_enroll_the_user_into_an_unpublish_course()
+    {
+        $this->expectException(\Exception::class);
+
+        $user = factory(\App\User::class)->create();
+        $course = factory(\App\Models\Course::class)->states('unpublished')->create();
+
+        $enrollment = $user->enrollInto($course);
+    }
+
+    /** @test */
     public function it_must_assign_lessons_when_enrolled_into_an_course()
     {
         Bus::fake();
