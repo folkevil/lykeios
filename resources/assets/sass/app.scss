@@ -29,6 +29,38 @@
  * @import "components/forms";
  */
 
+a {
+    @apply .no-underline;
+}
+
+.main-menu {
+    @apply .text-xxs;
+    @apply .uppercase;
+
+    .main-menu__item {
+        @apply .flex;
+        @apply .items-center;
+
+        @apply .py-4;
+        @apply .px-3;
+
+        @apply .text-grey-darker;
+
+        @apply .border-l-4;
+
+        @apply .opacity-50;
+
+        &.main-menu__item-active,
+        &:hover {
+            @apply .font-bold;
+
+            @apply .border-teal;
+
+            @apply .opacity-100;
+        }
+    }
+}
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.

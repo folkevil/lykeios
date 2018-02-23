@@ -194,39 +194,29 @@ module.exports = {
 
   fonts: {
     'sans': [
-      'system-ui',
-      'BlinkMacSystemFont',
-      '-apple-system',
-      'Segoe UI',
-      'Roboto',
-      'Oxygen',
-      'Ubuntu',
-      'Cantarell',
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
+      'Lato',
       'sans-serif',
     ],
-    'serif': [
-      'Constantia',
-      'Lucida Bright',
-      'Lucidabright',
-      'Lucida Serif',
-      'Lucida',
-      'DejaVu Serif',
-      'Bitstream Vera Serif',
-      'Liberation Serif',
-      'Georgia',
-      'serif',
-    ],
-    'mono': [
-      'Menlo',
-      'Monaco',
-      'Consolas',
-      'Liberation Mono',
-      'Courier New',
-      'monospace',
-    ]
+    // 'serif': [
+    //   'Constantia',
+    //   'Lucida Bright',
+    //   'Lucidabright',
+    //   'Lucida Serif',
+    //   'Lucida',
+    //   'DejaVu Serif',
+    //   'Bitstream Vera Serif',
+    //   'Liberation Serif',
+    //   'Georgia',
+    //   'serif',
+    // ],
+    // 'mono': [
+    //   'Menlo',
+    //   'Monaco',
+    //   'Consolas',
+    //   'Liberation Mono',
+    //   'Courier New',
+    //   'monospace',
+    // ]
   },
 
 
@@ -250,6 +240,7 @@ module.exports = {
   */
 
   textSizes: {
+    'xxs': '.625rem',   // 10px
     'xs': '.75rem',     // 12px
     'sm': '.875rem',    // 14px
     'base': '1rem',     // 16px
@@ -277,15 +268,15 @@ module.exports = {
   */
 
   fontWeights: {
-    'hairline': 100,
-    'thin': 200,
-    'light': 300,
+    // 'hairline': 100,
+    // 'thin': 200,
+    // 'light': 300,
     'normal': 400,
-    'medium': 500,
-    'semibold': 600,
+    // 'medium': 500,
+    // 'semibold': 600,
     'bold': 700,
-    'extrabold': 800,
-    'black': 900,
+    // 'extrabold': 800,
+    // 'black': 900,
   },
 
 
@@ -836,7 +827,7 @@ module.exports = {
     minHeight: ['responsive'],
     minWidth: ['responsive'],
     negativeMargin: ['responsive'],
-    opacity: ['responsive'],
+    opacity: ['responsive', 'hover'],
     overflow: ['responsive'],
     padding: ['responsive'],
     pointerEvents: ['responsive'],
