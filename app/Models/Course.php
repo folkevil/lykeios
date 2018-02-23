@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -28,7 +29,7 @@ class Course extends Model
      */
     public function enrollments(): BelongsToMany
     {
-        return $this->belongsToMany(self::class, 'course_user', 'course_id')
+        return $this->belongsToMany(User::class, 'course_user', 'course_id')
             ->as('enrollment')
             ->using(Enrollment::class)
             ->withTimestamps();
