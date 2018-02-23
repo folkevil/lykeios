@@ -3,7 +3,6 @@
 namespace App\Models\Relations;
 
 use App\Models\Lesson;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 

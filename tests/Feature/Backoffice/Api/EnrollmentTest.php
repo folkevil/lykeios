@@ -2,9 +2,7 @@
 
 namespace Tests\Feature\Backoffice\Api;
 
-use App\Jobs\GenerateUserLessons;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Bus;
 use Tests\TestCase;
 
 class EnrollmentTest extends TestCase
