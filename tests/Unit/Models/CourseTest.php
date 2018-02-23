@@ -60,6 +60,18 @@ class CourseTest extends TestCase
     }
 
     /** @test */
+    public function it_must_throw_an_exception_when_trying_to_unpublish_a_course_with_enrollments()
+    {
+        $this->expectException(\Exception::class);
+
+        $user = factory(\App\User::class)->create();
+        $course = factory(\App\Models\Course::class)->states('published')->create();
+        $user->enrollInto($course);
+
+        $course->markAsUnpublished();
+    }
+
+    /** @test */
     public function it_should_scope_to_published_courses()
     {
         factory(\App\Models\Course::class, 3)->create(['published_at' => now()]);

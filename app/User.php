@@ -78,6 +78,7 @@ class User extends Authenticatable
      *
      * @param \App\Models\Course $course
      *
+     * @throws \Exception
      * @return void
      */
     public function enrollInto(Course $course): void

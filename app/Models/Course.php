@@ -72,10 +72,15 @@ class Course extends Model
     /**
      * Mark the course as unpublished.
      *
+     * @throws \Exception
      * @return void
      */
     public function markAsUnpublished(): void
     {
+        if ($this->enrollments()->count() > 0) {
+            throw new \Exception('You cannot mark a course with enrollments as unpublished.');
+        }
+
         if ($this->published_at !== null) {
             $this->forceFill(['published_at' => null])->save();
         }
