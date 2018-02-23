@@ -2569,12 +2569,20 @@ a {
   font-family: Lato, sans-serif;
 }
 
+.font-light {
+  font-weight: 300;
+}
+
 .font-normal {
   font-weight: 400;
 }
 
 .font-bold {
   font-weight: 700;
+}
+
+.hover\:font-light:hover {
+  font-weight: 300;
 }
 
 .hover\:font-normal:hover {
@@ -6521,12 +6529,20 @@ a {
     font-family: Lato, sans-serif;
   }
 
+  .sm\:font-light {
+    font-weight: 300;
+  }
+
   .sm\:font-normal {
     font-weight: 400;
   }
 
   .sm\:font-bold {
     font-weight: 700;
+  }
+
+  .sm\:hover\:font-light:hover {
+    font-weight: 300;
   }
 
   .sm\:hover\:font-normal:hover {
@@ -10451,12 +10467,20 @@ a {
     font-family: Lato, sans-serif;
   }
 
+  .md\:font-light {
+    font-weight: 300;
+  }
+
   .md\:font-normal {
     font-weight: 400;
   }
 
   .md\:font-bold {
     font-weight: 700;
+  }
+
+  .md\:hover\:font-light:hover {
+    font-weight: 300;
   }
 
   .md\:hover\:font-normal:hover {
@@ -14381,12 +14405,20 @@ a {
     font-family: Lato, sans-serif;
   }
 
+  .lg\:font-light {
+    font-weight: 300;
+  }
+
   .lg\:font-normal {
     font-weight: 400;
   }
 
   .lg\:font-bold {
     font-weight: 700;
+  }
+
+  .lg\:hover\:font-light:hover {
+    font-weight: 300;
   }
 
   .lg\:hover\:font-normal:hover {
@@ -18311,12 +18343,20 @@ a {
     font-family: Lato, sans-serif;
   }
 
+  .xl\:font-light {
+    font-weight: 300;
+  }
+
   .xl\:font-normal {
     font-weight: 400;
   }
 
   .xl\:font-bold {
     font-weight: 700;
+  }
+
+  .xl\:hover\:font-light:hover {
+    font-weight: 300;
   }
 
   .xl\:hover\:font-normal:hover {

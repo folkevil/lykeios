@@ -8,11 +8,11 @@
         <title>{{ config('app.name') }}</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/app.css">
     </head>
     <body class="font-sans bg-grey-lighter">
-        <div id="app">
+        <div id="app" class="flex flex-row">
             <div class="w-1/5 bg-white min-h-screen shadow">
                 <div class="px-8 py-8">
                     <div>
@@ -50,7 +50,11 @@
                 </nav>
             </div>
 
-            <div class="w-4/5"></div>
+            <div class="w-4/5 p-8">
+                <div class="flex items-center justify-between">
+                    <h1 class="font-light tracking-tight text-grey-darker">Dashboard</h1>
+                </div>
+            </div>
         </div>
     </body>
 </html>
