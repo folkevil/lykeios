@@ -634,6 +634,10 @@ button,
  * @import "components/forms";
  */
 
+[role=button]:hover {
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
 }
@@ -656,6 +660,7 @@ a {
   padding-right: .75rem;
   color: #606f7b;
   border-left-width: 4px;
+  border-color: transparent;
   opacity: .5;
 }
 
@@ -2288,6 +2293,22 @@ a {
   cursor: not-allowed;
 }
 
+.hover\:cursor-auto:hover {
+  cursor: auto;
+}
+
+.hover\:cursor-default:hover {
+  cursor: default;
+}
+
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
+}
+
+.hover\:cursor-not-allowed:hover {
+  cursor: not-allowed;
+}
+
 .block {
   display: block;
 }
@@ -2598,6 +2619,10 @@ a {
 
 .h-16 {
   height: 4rem;
+}
+
+.h-18 {
+  height: 4.5rem;
 }
 
 .h-24 {
@@ -4513,6 +4538,10 @@ a {
   width: 4rem;
 }
 
+.w-18 {
+  width: 4.5rem;
+}
+
 .w-24 {
   width: 6rem;
 }
@@ -6216,6 +6245,22 @@ a {
     cursor: not-allowed;
   }
 
+  .sm\:hover\:cursor-auto:hover {
+    cursor: auto;
+  }
+
+  .sm\:hover\:cursor-default:hover {
+    cursor: default;
+  }
+
+  .sm\:hover\:cursor-pointer:hover {
+    cursor: pointer;
+  }
+
+  .sm\:hover\:cursor-not-allowed:hover {
+    cursor: not-allowed;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -6526,6 +6571,10 @@ a {
 
   .sm\:h-16 {
     height: 4rem;
+  }
+
+  .sm\:h-18 {
+    height: 4.5rem;
   }
 
   .sm\:h-24 {
@@ -8433,6 +8482,10 @@ a {
     width: 4rem;
   }
 
+  .sm\:w-18 {
+    width: 4.5rem;
+  }
+
   .sm\:w-24 {
     width: 6rem;
   }
@@ -10122,6 +10175,22 @@ a {
     cursor: not-allowed;
   }
 
+  .md\:hover\:cursor-auto:hover {
+    cursor: auto;
+  }
+
+  .md\:hover\:cursor-default:hover {
+    cursor: default;
+  }
+
+  .md\:hover\:cursor-pointer:hover {
+    cursor: pointer;
+  }
+
+  .md\:hover\:cursor-not-allowed:hover {
+    cursor: not-allowed;
+  }
+
   .md\:block {
     display: block;
   }
@@ -10432,6 +10501,10 @@ a {
 
   .md\:h-16 {
     height: 4rem;
+  }
+
+  .md\:h-18 {
+    height: 4.5rem;
   }
 
   .md\:h-24 {
@@ -12339,6 +12412,10 @@ a {
     width: 4rem;
   }
 
+  .md\:w-18 {
+    width: 4.5rem;
+  }
+
   .md\:w-24 {
     width: 6rem;
   }
@@ -14028,6 +14105,22 @@ a {
     cursor: not-allowed;
   }
 
+  .lg\:hover\:cursor-auto:hover {
+    cursor: auto;
+  }
+
+  .lg\:hover\:cursor-default:hover {
+    cursor: default;
+  }
+
+  .lg\:hover\:cursor-pointer:hover {
+    cursor: pointer;
+  }
+
+  .lg\:hover\:cursor-not-allowed:hover {
+    cursor: not-allowed;
+  }
+
   .lg\:block {
     display: block;
   }
@@ -14338,6 +14431,10 @@ a {
 
   .lg\:h-16 {
     height: 4rem;
+  }
+
+  .lg\:h-18 {
+    height: 4.5rem;
   }
 
   .lg\:h-24 {
@@ -16245,6 +16342,10 @@ a {
     width: 4rem;
   }
 
+  .lg\:w-18 {
+    width: 4.5rem;
+  }
+
   .lg\:w-24 {
     width: 6rem;
   }
@@ -17934,6 +18035,22 @@ a {
     cursor: not-allowed;
   }
 
+  .xl\:hover\:cursor-auto:hover {
+    cursor: auto;
+  }
+
+  .xl\:hover\:cursor-default:hover {
+    cursor: default;
+  }
+
+  .xl\:hover\:cursor-pointer:hover {
+    cursor: pointer;
+  }
+
+  .xl\:hover\:cursor-not-allowed:hover {
+    cursor: not-allowed;
+  }
+
   .xl\:block {
     display: block;
   }
@@ -18244,6 +18361,10 @@ a {
 
   .xl\:h-16 {
     height: 4rem;
+  }
+
+  .xl\:h-18 {
+    height: 4.5rem;
   }
 
   .xl\:h-24 {
@@ -20149,6 +20270,10 @@ a {
 
   .xl\:w-16 {
     width: 4rem;
+  }
+
+  .xl\:w-18 {
+    width: 4.5rem;
   }
 
   .xl\:w-24 {

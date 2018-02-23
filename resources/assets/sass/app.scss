@@ -29,6 +29,10 @@
  * @import "components/forms";
  */
 
+[role=button]:hover {
+    @apply .cursor-pointer;
+}
+
 a {
     @apply .no-underline;
 }
@@ -47,6 +51,7 @@ a {
         @apply .text-grey-darker;
 
         @apply .border-l-4;
+        @apply .border-transparent;
 
         @apply .opacity-50;
 
