@@ -20,7 +20,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 // TODO: improve menu
 $(document).ready(() => {
     $('.hamburger-menu').on('click', () => {
-        $('nav').first().toggleClass('hidden', 'slow');
+        $('#menu-icon').first().toggleClass('hidden');
+        $('#close-menu-icon').first().toggleClass('hidden');
+
+        $('nav').first().toggleClass('hidden');
     });
 });
 

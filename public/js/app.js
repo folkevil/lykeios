@@ -13809,7 +13809,10 @@ Vue.component('example-component', __webpack_require__(39));
 // TODO: improve menu
 $(document).ready(function () {
     $('.hamburger-menu').on('click', function () {
-        $('nav').first().toggleClass('hidden', 'slow');
+        $('#menu-icon').first().toggleClass('hidden');
+        $('#close-menu-icon').first().toggleClass('hidden');
+
+        $('nav').first().toggleClass('hidden');
     });
 });
 

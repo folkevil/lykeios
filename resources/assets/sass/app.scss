@@ -29,6 +29,10 @@
  * @import "components/forms";
  */
 
+input {
+    outline: none;
+}
+
 a {
     @apply .no-underline;
 }

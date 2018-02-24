@@ -18,7 +18,8 @@
                 <div class="flex items-center px-4 py-3 lg:flex-col lg:p-6">
                     <div class="w-1/4 lg:hidden">
                         <a href="#" role="button" class="hamburger-menu">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-grey w-6 h-6" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" id="menu-icon" class="fill-current text-grey w-6 h-6" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" id="close-menu-icon" class="hidden fill-current text-grey w-6 h-6" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
                         </a>
                     </div>
 
@@ -57,9 +58,19 @@
                 </nav>
             </div>
 
-            <div class="p-4 lg:w-4/5">
+            <div class="p-4 lg:px-20 lg:py-6 lg:w-4/5">
                 <div class="flex items-center justify-between">
-                    <h1 class="font-light tracking-tight text-grey-darker">Dashboard</h1>
+                    <div class="lg:w-3/4">
+                        <h2 class="font-light tracking-tight text-grey-darker">Dashboard</h2>
+                    </div>
+
+                    <div class="hidden text-grey-dark lg:block w-1/4 relative">
+                        <input type="search" name="q" class="rounded-full w-full px-4 pl-10 py-3 bg-grey-light" placeholder="Search...">
+
+                        <div class="absolute pin-y flex items-center px-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-current w-4 h-4" viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/></svg>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
