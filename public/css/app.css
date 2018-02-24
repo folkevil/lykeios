@@ -634,41 +634,12 @@ button,
  * @import "components/forms";
  */
 
-[role=button]:hover {
-  cursor: pointer;
-}
-
 a {
   text-decoration: none;
 }
 
-.main-menu {
-  font-size: .625rem;
-  text-transform: uppercase;
-}
-
-.main-menu .main-menu__item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: .75rem;
-  padding-right: .75rem;
-  color: #606f7b;
-  border-left-width: 4px;
-  border-color: transparent;
-  opacity: .5;
-}
-
-.main-menu .main-menu__item.main-menu__item-active,
-.main-menu .main-menu__item:hover {
-  font-weight: 700;
-  border-color: #4dc0b5;
-  opacity: 1;
+[role=button]:hover {
+  cursor: pointer;
 }
 
 /**
@@ -4286,7 +4257,7 @@ a {
   color: #ffebef;
 }
 
-.text-xxs {
+.text-2xs {
   font-size: .625rem;
 }
 
@@ -8238,7 +8209,7 @@ a {
     color: #ffebef;
   }
 
-  .sm\:text-xxs {
+  .sm\:text-2xs {
     font-size: .625rem;
   }
 
@@ -12176,7 +12147,7 @@ a {
     color: #ffebef;
   }
 
-  .md\:text-xxs {
+  .md\:text-2xs {
     font-size: .625rem;
   }
 
@@ -16114,7 +16085,7 @@ a {
     color: #ffebef;
   }
 
-  .lg\:text-xxs {
+  .lg\:text-2xs {
     font-size: .625rem;
   }
 
@@ -20052,7 +20023,7 @@ a {
     color: #ffebef;
   }
 
-  .xl\:text-xxs {
+  .xl\:text-2xs {
     font-size: .625rem;
   }
 

@@ -17,6 +17,13 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
+// TODO: improve menu
+$(document).ready(() => {
+    $('.hamburger-menu').on('click', () => {
+        $('nav').first().toggleClass('hidden', 'slow');
+    });
+});
+
 const app = new Vue({
     el: '#app'
 });

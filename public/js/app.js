@@ -13806,8 +13806,15 @@ window.Vue = __webpack_require__(36);
 
 Vue.component('example-component', __webpack_require__(39));
 
+// TODO: improve menu
+$(document).ready(function () {
+    $('.hamburger-menu').on('click', function () {
+        $('nav').first().toggleClass('hidden', 'slow');
+    });
+});
+
 var app = new Vue({
-  el: '#app'
+    el: '#app'
 });
 
 /***/ }),

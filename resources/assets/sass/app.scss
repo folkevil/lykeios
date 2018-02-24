@@ -29,41 +29,12 @@
  * @import "components/forms";
  */
 
-[role=button]:hover {
-    @apply .cursor-pointer;
-}
-
 a {
     @apply .no-underline;
 }
 
-.main-menu {
-    @apply .text-xxs;
-    @apply .uppercase;
-
-    .main-menu__item {
-        @apply .flex;
-        @apply .items-center;
-
-        @apply .py-4;
-        @apply .px-3;
-
-        @apply .text-grey-darker;
-
-        @apply .border-l-4;
-        @apply .border-transparent;
-
-        @apply .opacity-50;
-
-        &.main-menu__item-active,
-        &:hover {
-            @apply .font-bold;
-
-            @apply .border-teal;
-
-            @apply .opacity-100;
-        }
-    }
+[role=button]:hover {
+    @apply .cursor-pointer;
 }
 
 /**
