@@ -28,12 +28,12 @@
                         <form class="p-8">
                             <div class="mb-8">
                                 <div class="uppercase text-grey-dark text-2xs font-bold mb-2 tracking-wide">Your E-mail</div>
-                                <input type="email" name="email" class="px-4 py-3 border-2 rounded w-full text-grey-darkest" placeholder="Your E-mail" autofocus>
+                                <input type="email" name="email" class="px-4 py-3 border-2 rounded w-full text-grey-darkest focus:border-teal-light" placeholder="Your E-mail" autofocus>
                             </div>
 
                             <div class="mb-8">
                                 <div class="uppercase text-grey-dark text-2xs font-bold mb-2 tracking-wide">Password</div>
-                                <input type="password" name="password" class="px-4 py-3 border-2 rounded w-full text-grey-darkest" placeholder="Your Password">
+                                <input type="password" name="password" class="px-4 py-3 border-2 rounded w-full text-grey-darkest focus:border-teal-light" placeholder="Your Password">
                             </div>
 
                             <div class="flex items-center justify-between">
@@ -44,7 +44,7 @@
 
                                 <button type="submit"
                                         class="px-8 py-3 rounded text-white border-2 border-transparent bg-teal hover:border-teal hover:bg-transparent hover:text-teal">
-                                    Login
+                                    Login &rarr;
                                 </button>
                             </div>
                         </form>
@@ -53,7 +53,7 @@
             </div>
 
             <div class="text-center">
-                <a href="" class="text-xs tracking-tight text-grey-darker border-b py-1 uppercase">Did you forgot your password?</a>
+                <a href="" class="text-sm text-grey-darker py-1 underline tracking-wide hover:text-grey">Forgot your password?</a>
             </div>
         </div>
 
