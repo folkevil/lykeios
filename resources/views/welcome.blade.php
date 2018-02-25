@@ -12,7 +12,7 @@
         {{-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"> --}}
         <link rel="stylesheet" type="text/css" href="css/app.css">
     </head>
-    <body class="font-sans bg-grey-lighter">
+    <body class="font-sans antialiased bg-grey-lighter">
         <div id="app" class="lg:flex lg:flex-row">
             <div class="bg-white shadow lg:w-1/5 lg:min-h-screen">
                 <div class="flex items-center px-4 py-3 lg:flex-col lg:p-6">
@@ -95,6 +95,7 @@
                     </div>
                 </div>
 
+                <!-- Panel -->
                 <div class="mb-8">
                     <div class="bg-white shadow rounded p-4">
                         <div>
@@ -102,6 +103,68 @@
                             <div class="text-grey text-xs">Panel Sub-Heading</div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Simple Table -->
+                <div class="mb-8">
+                    <table class="w-full" style="border-collapse: collapse;">
+                        <thead class="bg-grey-light text-2xs uppercase text-grey-darkest tracking-tight">
+                            <tr>
+                                <th class="p-3 text-left">Name</th>
+                                <th class="p-3 text-left">E-mail</th>
+                                <th class="p-3 text-left">Status</th>
+                                <th class="p-3 text-left">Role</th>
+                                <th width="10%" class=""></th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="text-sm">
+                            <tr class="border-b border-grey-light">
+                                <td class="p-3">
+                                    <div class="flex items-center">
+                                        <img src="img/avatar.jpg" class="block rounded-full h-8 w-8 mr-3">
+                                        Ian Rodrigues
+                                    </div>
+                                </td>
+                                <td class="p-3 text-grey-darker">ian@lykeios.org</td>
+                                <td class="p-3 text-grey-darker">Active</td>
+                                <td class="p-3 text-grey-darker">Administrator</td>
+                                <td class="p-3 text-center">
+                                    <div class="inline-block relative">
+                                        <a href="" role="button" class="inline-flex items-center px-2 py-2 rounded text-grey-dark text-xs rounded-full hover:bg-grey-light">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+                                        </a>
+
+                                        <div class="text-left bg-white shadow absolute pin-r flex flex-col rounded w-32 z-10">
+                                            <a href="" class="px-4 py-2 text-grey-dark text-xs hover:bg-grey-lighter">Edit</a>
+                                            <a href="" class="px-4 py-2 text-grey-dark text-xs hover:bg-grey-lighter">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="border-b border-grey-light">
+                                <td class="p-3">
+                                    <div class="flex items-center">
+                                        <div class="block rounded-full mr-3 p-2 bg-grey-light inline-flex items-center ">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current text-grey-dark" viewBox="0 0 20 20"><path d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z"/></svg>
+                                        </div>
+                                        John Doe
+                                    </div>
+                                </td>
+                                <td class="p-3 text-grey-darker">john@lykeios.org</td>
+                                <td class="p-3 text-grey-darker">Inactive</td>
+                                <td class="p-3 text-grey-darker">Administrator</td>
+                                <td class="p-3 text-center">
+                                    <div class="inline-block relative">
+                                        <a href="" role="button" class="inline-flex items-center px-2 py-2 rounded text-grey-dark text-xs rounded-full hover:bg-grey-light">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
