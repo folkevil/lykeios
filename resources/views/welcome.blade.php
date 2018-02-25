@@ -34,9 +34,17 @@
                         <div class="relative">
                             <img src="img/avatar.jpg" class="block rounded-full h-18 w-18">
 
-                            <a href="#" role="button" class="rounded-full border h-6 w-6 text-grey-darker absolute pin-b pin-r bg-white hover:shadow-inner">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-1" viewBox="0 0 20 20"><path d="M3.94 6.5L2.22 3.64l1.42-1.42L6.5 3.94c.52-.3 1.1-.54 1.7-.7L9 0h2l.8 3.24c.6.16 1.18.4 1.7.7l2.86-1.72 1.42 1.42-1.72 2.86c.3.52.54 1.1.7 1.7L20 9v2l-3.24.8c-.16.6-.4 1.18-.7 1.7l1.72 2.86-1.42 1.42-2.86-1.72c-.52.3-1.1.54-1.7.7L11 20H9l-.8-3.24c-.6-.16-1.18-.4-1.7-.7l-2.86 1.72-1.42-1.42 1.72-2.86c-.3-.52-.54-1.1-.7-1.7L0 11V9l3.24-.8c.16-.6.4-1.18.7-1.7zM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-                            </a>
+                            <div class="absolute pin-b pin-r">
+                                <a href="" role="button" class="inline-flex items-center px-1 py-1 rounded text-grey-dark text-xs rounded-full bg-white border hover:bg-grey-light">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M3.94 6.5L2.22 3.64l1.42-1.42L6.5 3.94c.52-.3 1.1-.54 1.7-.7L9 0h2l.8 3.24c.6.16 1.18.4 1.7.7l2.86-1.72 1.42 1.42-1.72 2.86c.3.52.54 1.1.7 1.7L20 9v2l-3.24.8c-.16.6-.4 1.18-.7 1.7l1.72 2.86-1.42 1.42-2.86-1.72c-.52.3-1.1.54-1.7.7L11 20H9l-.8-3.24c-.6-.16-1.18-.4-1.7-.7l-2.86 1.72-1.42-1.42 1.72-2.86c-.3-.52-.54-1.1-.7-1.7L0 11V9l3.24-.8c.16-.6.4-1.18.7-1.7zM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                                </a>
+
+                                <div class="text-left bg-white shadow-md absolute pin-l flex flex-col rounded w-32 z-10">
+                                    <span class="px-4 py-4 text-grey-darker text-2xs uppercase font-bold">Ian Rodrigues</span>
+                                    <a href="" class="px-4 py-2 text-grey-dark text-xs hover:bg-grey-lighter">My Account</a>
+                                    <a href="" class="px-4 py-2 text-grey-dark text-xs hover:bg-grey-lighter">Logout</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -136,6 +144,7 @@
                                         </a>
 
                                         <div class="text-left bg-white shadow absolute pin-r flex flex-col rounded w-32 z-10">
+                                            <span class="px-4 py-4 text-grey-darker text-2xs uppercase font-bold">Actions</span>
                                             <a href="" class="px-4 py-2 text-grey-dark text-xs hover:bg-grey-lighter">Edit</a>
                                             <a href="" class="px-4 py-2 text-grey-dark text-xs hover:bg-grey-lighter">Delete</a>
                                         </div>
