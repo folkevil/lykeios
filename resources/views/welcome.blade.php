@@ -64,17 +64,33 @@
 
             <div class="p-4 lg:px-20 lg:py-6 lg:w-4/5">
                 <!-- Content Heading -->
-                <div class="flex items-center justify-between">
-                    <div class="lg:w-3/4">
-                        <h2 class="font-light tracking-tight text-grey-darker">Overview</h2>
+                <div class="mb-8">
+                    <div class="flex items-center justify-between">
+                        <div class="lg:w-3/4">
+                            <h2 class="font-light tracking-tight text-grey-darker">Overview</h2>
+                        </div>
+
+                        <!-- Search Input -->
+                        <div class="hidden text-grey-dark md:block w-1/4 relative">
+                            <input type="search" name="q" class="rounded-full w-full px-4 pl-10 py-3 bg-grey-light" placeholder="Search...">
+
+                            <div class="absolute pin-y flex items-center px-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="fill-current w-4 h-4" viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/></svg>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    <!-- Search Input -->
-                    <div class="hidden text-grey-dark lg:block w-1/4 relative">
-                        <input type="search" name="q" class="rounded-full w-full px-4 pl-10 py-3 bg-grey-light" placeholder="Search...">
-
-                        <div class="absolute pin-y flex items-center px-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-current w-4 h-4" viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/></svg>
+                <!-- Overview -->
+                <div class="mb-8">
+                    <div class="flex flex-wrap">
+                        <div class="w-1/3 mb-4 md:w-1/6 md:m-0">
+                            <div class="text-3xl text-grey-darker mb-2">39</div>
+                            <div class="text-sm text-grey tracking-tight font-light">Published Courses</div>
+                        </div>
+                        <div class="w-1/3 mb-4 md:w-1/6 md:m-0">
+                            <div class="text-3xl text-grey-darker mb-2">245</div>
+                            <div class="text-sm text-grey tracking-tight font-light">Enrolled Students</div>
                         </div>
                     </div>
                 </div>
