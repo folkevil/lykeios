@@ -42,7 +42,7 @@
                 </div>
 
                 <!-- Main Navigation -->
-                <nav class="text-2xs uppercase hidden lg:block">
+                <nav class="hidden min-h-screen text-2xs uppercase absolute bg-white shadow z-20 w-full lg:block lg:w-auto lg:static lg:shadow-none">
                     <a href="#" class="flex items-center py-4 px-3 text-grey-darker opacity-50 hover:font-bold hover:opacity-100 lg:border-l-4 lg:border-transparent lg:hover:border-teal    bg-teal text-white lg:bg-transparent lg:text-grey-darker        font-bold opacity-100 lg:border-teal">
                         <svg xmlns="http://www.w3.org/2000/svg" class="fill-current w-4 h-4 mr-2" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm-5.6-4.29a9.95 9.95 0 0 1 11.2 0 8 8 0 1 0-11.2 0zm6.12-7.64l3.02-3.02 1.41 1.41-3.02 3.02a2 2 0 1 1-1.41-1.41z"/></svg>
                         Overview
