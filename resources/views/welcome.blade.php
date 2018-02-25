@@ -94,6 +94,15 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="mb-8">
+                    <div class="bg-white shadow rounded p-4">
+                        <div>
+                            <div class="text-grey-darker mb-2">Panel Heading</div>
+                            <div class="text-grey text-xs">Panel Sub-Heading</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
