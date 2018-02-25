@@ -45,7 +45,7 @@
                 <nav class="text-2xs uppercase hidden lg:block">
                     <a href="#" class="flex items-center py-4 px-3 text-grey-darker opacity-50 hover:font-bold hover:opacity-100 lg:border-l-4 lg:border-transparent lg:hover:border-teal    bg-teal text-white lg:bg-transparent lg:text-grey-darker        font-bold opacity-100 lg:border-teal">
                         <svg xmlns="http://www.w3.org/2000/svg" class="fill-current w-4 h-4 mr-2" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm-5.6-4.29a9.95 9.95 0 0 1 11.2 0 8 8 0 1 0-11.2 0zm6.12-7.64l3.02-3.02 1.41 1.41-3.02 3.02a2 2 0 1 1-1.41-1.41z"/></svg>
-                        Dashboard
+                        Overview
                     </a>
                     <a href="#" class="flex items-center py-4 px-3 text-grey-darker opacity-50 hover:font-bold hover:opacity-100 lg:border-l-4 lg:border-transparent lg:hover:border-teal">
                         <svg xmlns="http://www.w3.org/2000/svg" class="fill-current w-4 h-4 mr-2" viewBox="0 0 20 20"><path d="M3.06 2.003h-.002a.713.713 0 0 0-.712.716v10.732c0 .393.321.714.716.715 1.666.004 4.457.351 6.382 2.366V5.302a.686.686 0 0 0-.098-.363C7.766 2.394 4.73 2.007 3.06 2.003zm14.594 11.448V2.719a.713.713 0 0 0-.712-.716h-.001c-1.67.004-4.707.39-6.287 2.936a.686.686 0 0 0-.098.362v11.231c1.925-2.015 4.716-2.362 6.382-2.366a.718.718 0 0 0 .716-.715z"/><path d="M19.284 4.478h-.519v8.973a1.831 1.831 0 0 1-1.825 1.826c-1.413.004-3.742.28-5.392 1.842 2.853-.7 5.862-.245 7.576.146a.714.714 0 0 0 .876-.698V5.194a.716.716 0 0 0-.716-.716zm-18.05 8.973V4.478H.716A.716.716 0 0 0 0 5.194v11.373a.714.714 0 0 0 .876.697c1.714-.39 4.723-.844 7.576-.146-1.65-1.561-3.98-1.837-5.393-1.84a1.83 1.83 0 0 1-1.825-1.827z"/></g></svg>
@@ -66,7 +66,7 @@
                 <!-- Content Heading -->
                 <div class="flex items-center justify-between">
                     <div class="lg:w-3/4">
-                        <h2 class="font-light tracking-tight text-grey-darker">Dashboard</h2>
+                        <h2 class="font-light tracking-tight text-grey-darker">Overview</h2>
                     </div>
 
                     <!-- Search Input -->
