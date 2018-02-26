@@ -13,7 +13,7 @@ class AssignLessonsToUserTest extends TestCase
     /** @test */
     public function handle()
     {
-        $user = factory(\App\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $course = factory(\App\Models\Course::class)->states('published')->create();
 
         $lessons = factory(\App\Models\Lesson::class, 2)->states('video')->create(['course_id' => $course->id]);

@@ -10,7 +10,7 @@ class EnrollmentTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     private $admin;
 
@@ -18,14 +18,14 @@ class EnrollmentTest extends TestCase
     {
         parent::setUp();
 
-        $this->admin = factory(\App\User::class)->states('admin')->create();
+        $this->admin = factory(\App\Models\User::class)->states('admin')->create();
     }
 
     /** @test */
     public function users_can_be_enrolled_in_published_courses()
     {
         $this->withoutExceptionHandling();
-        $students = factory(\App\User::class, 2)->create();
+        $students = factory(\App\Models\User::class, 2)->create();
         $course = factory(\App\Models\Course::class)->states('published')->create();
 
         $data = [
@@ -46,7 +46,7 @@ class EnrollmentTest extends TestCase
     /** @test */
     public function non_admin_cannot_enroll_users_into_courses()
     {
-        $student = factory(\App\User::class)->create();
+        $student = factory(\App\Models\User::class)->create();
 
         $this->actingAs($student, 'api');
         $response = $this->post('/backoffice/api/enrollments', []);

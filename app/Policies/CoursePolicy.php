@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Course;
-use App\User;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CoursePolicy
@@ -13,7 +13,7 @@ class CoursePolicy
     /**
      * Determine the user ability before run all others checks.
      *
-     * @param \App\User $user
+     * @param \App\Models\User $user
      * @param mixed $ability
      *
      * @return bool

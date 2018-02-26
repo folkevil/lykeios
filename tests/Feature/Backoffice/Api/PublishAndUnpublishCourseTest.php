@@ -11,7 +11,7 @@ class PublishAndUnpublishCourseTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     private $admin;
 
@@ -24,7 +24,7 @@ class PublishAndUnpublishCourseTest extends TestCase
     {
         parent::setUp();
 
-        $this->admin = factory(\App\User::class)->states('admin')->create();
+        $this->admin = factory(\App\Models\User::class)->states('admin')->create();
         $this->course = factory(\App\Models\Course::class)->create([
             'name' => 'How to become a web artisan with Laravel',
             'language' => 'en_US',
@@ -52,7 +52,7 @@ class PublishAndUnpublishCourseTest extends TestCase
     /** @test */
     public function other_than_admin_cannot_publish_courses()
     {
-        $this->student = factory(\App\User::class)->create();
+        $this->student = factory(\App\Models\User::class)->create();
 
         $this->actingAs($this->student, 'api');
         $response = $this->put("/backoffice/api/courses/{$this->course->id}/publish");
@@ -81,7 +81,7 @@ class PublishAndUnpublishCourseTest extends TestCase
     /** @test */
     public function other_than_admin_cannot_unpublish_courses()
     {
-        $this->student = factory(\App\User::class)->create();
+        $this->student = factory(\App\Models\User::class)->create();
 
         $this->actingAs($this->student, 'api');
         $response = $this->put("/backoffice/api/courses/{$this->course->id}/unpublish");
