@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backoffice\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;

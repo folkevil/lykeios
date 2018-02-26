@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Course;
-use App\User;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -15,7 +15,7 @@ class AssignLessonsToUser implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     protected $user;
 

@@ -10,7 +10,7 @@ class CourseTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     private $admin;
 
@@ -23,7 +23,7 @@ class CourseTest extends TestCase
     {
         parent::setUp();
 
-        $this->admin = factory(\App\User::class)->states('admin')->create();
+        $this->admin = factory(\App\Models\User::class)->states('admin')->create();
         $this->existingCourse = factory(\App\Models\Course::class)->create([
             'name' => 'How to become a web artisan with Laravel',
             'language' => 'en_US',
@@ -46,7 +46,7 @@ class CourseTest extends TestCase
     /** @test */
     public function other_than_admin_cannot_see_all_courses()
     {
-        $this->student = factory(\App\User::class)->create();
+        $this->student = factory(\App\Models\User::class)->create();
 
         $this->actingAs($this->student, 'api');
         $response = $this->get('/backoffice/api/courses');
@@ -70,7 +70,7 @@ class CourseTest extends TestCase
     /** @test */
     public function other_than_admin_cannot_see_a_single_course()
     {
-        $this->student = factory(\App\User::class)->create();
+        $this->student = factory(\App\Models\User::class)->create();
 
         $this->actingAs($this->student, 'api');
         $response = $this->get("/backoffice/api/courses/{$this->existingCourse->id}");
@@ -107,7 +107,7 @@ class CourseTest extends TestCase
     /** @test */
     public function other_than_admin_cannot_create_courses()
     {
-        $this->student = factory(\App\User::class)->create();
+        $this->student = factory(\App\Models\User::class)->create();
 
         $this->actingAs($this->student, 'api');
         $response = $this->json('POST', '/backoffice/api/courses', []);
@@ -159,7 +159,7 @@ class CourseTest extends TestCase
     /** @test */
     public function other_than_admin_cannot_update_courses()
     {
-        $this->student = factory(\App\User::class)->create();
+        $this->student = factory(\App\Models\User::class)->create();
 
         $this->actingAs($this->student, 'api');
         $response = $this->json('PUT', "/backoffice/api/courses/{$this->existingCourse->id}", []);
@@ -182,7 +182,7 @@ class CourseTest extends TestCase
     /** @test */
     public function other_than_admin_cannot_delete_courses()
     {
-        $this->student = factory(\App\User::class)->create();
+        $this->student = factory(\App\Models\User::class)->create();
 
         $this->actingAs($this->student, 'api');
         $response = $this->delete("/backoffice/api/courses/{$this->existingCourse->id}");

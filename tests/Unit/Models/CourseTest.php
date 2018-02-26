@@ -64,7 +64,7 @@ class CourseTest extends TestCase
     {
         $this->expectException(\Exception::class);
 
-        $user = factory(\App\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $course = factory(\App\Models\Course::class)->states('published')->create();
         $user->enrollInto($course);
 

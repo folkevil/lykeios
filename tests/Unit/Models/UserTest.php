@@ -14,8 +14,8 @@ class UserTest extends TestCase
     /** @test */
     public function it_should_determine_if_it_is_admin()
     {
-        $admin = factory(\App\User::class)->states('admin')->create();
-        $student = factory(\App\User::class)->create();
+        $admin = factory(\App\Models\User::class)->states('admin')->create();
+        $student = factory(\App\Models\User::class)->create();
 
         $this->assertTrue($admin->isAdmin());
         $this->assertFalse($student->isAdmin());
@@ -24,7 +24,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_be_enrroled_in_a_published_course()
     {
-        $user = factory(\App\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $course = factory(\App\Models\Course::class)->states('published')->create();
 
         $enrollment = $user->enrollInto($course);
@@ -37,7 +37,7 @@ class UserTest extends TestCase
     {
         $this->expectException(\Exception::class);
 
-        $user = factory(\App\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $course = factory(\App\Models\Course::class)->states('unpublished')->create();
 
         $enrollment = $user->enrollInto($course);
@@ -48,7 +48,7 @@ class UserTest extends TestCase
     {
         Bus::fake();
 
-        $user = factory(\App\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $course = factory(\App\Models\Course::class)->states('published')->create();
 
         $enrollment = $user->enrollInto($course);
