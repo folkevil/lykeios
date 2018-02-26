@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Jobs\AssignLessonsToUser;
-use App\Models\Course;
 use App\Models\Relations\Enrollment;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
