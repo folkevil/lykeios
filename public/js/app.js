@@ -13808,11 +13808,21 @@ Vue.component('example-component', __webpack_require__(39));
 
 // TODO: improve menu
 $(document).ready(function () {
-    $('.hamburger-menu').on('click', function () {
+    $('.hamburger-menu').on('click', function (event) {
+        event.preventDefault();
+
         $('#menu-icon').first().toggleClass('hidden');
         $('#close-menu-icon').first().toggleClass('hidden');
 
         $('nav').first().toggleClass('hidden');
+    });
+
+    $('#user-settings').on('click', function (event) {
+        event.preventDefault();
+
+        $('#user-settings-menu').first().toggleClass('hidden');
+        $('#user-settings-menu').first().toggleClass('flex');
+        $('#user-settings-menu').first().toggleClass('flex-col');
     });
 });
 
