@@ -17,6 +17,26 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
+// TODO: improve menu
+$(document).ready(() => {
+    $('.hamburger-menu').on('click', event => {
+        event.preventDefault();
+
+        $('#menu-icon').first().toggleClass('hidden');
+        $('#close-menu-icon').first().toggleClass('hidden');
+
+        $('nav').first().toggleClass('hidden');
+    });
+
+    $('#user-settings').on('click', event => {
+        event.preventDefault();
+
+        $('#user-settings-menu').first().toggleClass('hidden');
+        $('#user-settings-menu').first().toggleClass('flex');
+        $('#user-settings-menu').first().toggleClass('flex-col');
+    });
+});
+
 const app = new Vue({
     el: '#app'
 });

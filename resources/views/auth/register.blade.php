@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.backoffice.unauthenticated', [
+    'heading' => 'Create New Account',
+])
 
 @section('content')
 <div class="container">

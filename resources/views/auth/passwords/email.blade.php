@@ -1,47 +1,41 @@
-@extends('layouts.app')
+@extends('layouts.backoffice.unauthenticated', [
+    'heading' => 'Forgot You Password?',
+])
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card card-default">
-                <div class="card-header">Reset Password</div>
+<form method="POST" action="{{ route('password.email') }}" class="p-8">
+    @csrf
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <div class="mb-8">
+        <div class="uppercase text-grey-dark text-2xs font-bold mb-2 tracking-wide">Your E-mail</div>
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+        <input class="px-4 py-3 border-2 rounded w-full text-grey-darkest focus:border-teal-light {{ $errors->has('email') ? 'border-red' : '' }}"
+                type="email"
+                name="email"
+                value="{{ old('email') }}"
+                placeholder="Your E-mail"
+                autofocus
+                required>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        @if ($errors->has('email'))
+            <div class="text-red text-sm py-2">{{ $errors->first('email') }}</div>
+        @endif
     </div>
+
+    <div class="flex items-center justify-center">
+        <button type="submit"
+                class="px-8 py-3 rounded text-white border-2 border-transparent bg-teal hover:border-teal hover:bg-transparent hover:text-teal">
+            Send Password Reset Link
+        </button>
+    </div>
+</form>
+@endsection
+
+@section('footer')
+<div class="text-center">
+    <a href="{{ route('login') }}"
+        class="text-sm text-grey-darker py-1 underline tracking-wide hover:text-grey">
+        &larr; Back to Login
+    </a>
 </div>
 @endsection
